@@ -1,11 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
+<<<<<<< HEAD
   // Add viewport meta tag to ensure responsiveness on mobile
+=======
+  
+>>>>>>> 7b51ce5 (new update)
   const metaViewport = document.createElement('meta');
   metaViewport.name = 'viewport';
   metaViewport.content = 'width=device-width, initial-scale=1.0';
   document.head.appendChild(metaViewport);
 
+<<<<<<< HEAD
   const baseURL = 'http://localhost:4000/biriyaniMenu';
+=======
+  const baseURL = 'https://cloner-1-q2gj.onrender.com/biriyaniMenu';
+>>>>>>> 7b51ce5 (new update)
 
   const fetchData = async () => {
     try {
