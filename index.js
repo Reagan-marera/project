@@ -1,5 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const baseURL = 'http://localhost:4000/biriyaniMenu';
+  
+  const metaViewport = document.createElement('meta');
+  metaViewport.name = 'viewport';
+  metaViewport.content = 'width=device-width, initial-scale=1.0';
+  document.head.appendChild(metaViewport);
+
+  const baseURL = 'https://cloner-1-q2gj.onrender.com/biriyaniMenu';
 
   const fetchData = async () => {
     try {
@@ -23,17 +29,14 @@ document.addEventListener("DOMContentLoaded", () => {
       data.forEach(biriyani => {
         const li = document.createElement('li');
         
-        
         const img = document.createElement('img');
         img.src = biriyani.img; 
         img.alt = biriyani.name; 
         li.appendChild(img); 
         
-        
         const dishInfo = document.createElement('span');
         dishInfo.textContent = `${biriyani.name} - $${biriyani.price.toFixed(2)} - ${biriyani.description}`;
         li.appendChild(dishInfo); 
-        
         
         const orderButton = document.createElement('button');
         orderButton.textContent = 'Order';
