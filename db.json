@@ -1,0 +1,39 @@
+{
+  "biriyaniMenu": [
+    {
+      "id": 1,
+      "name": "Chicken Biriyani",
+      "price": 10.99,
+      "description": "Spicy chicken biriyani with fragrant rice",
+      "img": "https://t3.ftcdn.net/jpg/01/14/51/60/360_F_114516029_Z2B6FO30AB6ZR3v9WHXjpXmJScaiLtzk.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Vegetable Biriyani",
+      "price": 8.99,
+      "description": "Delicious vegetable biriyani cooked with aromatic spices",
+      "img": "https://www.shutterstock.com/image-photo/veg-biryani-260nw-142854022.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Mutton Biriyani",
+      "price": 12.99,
+      "description": "Tender mutton pieces cooked to perfection in biriyani masala",
+      "img": "https://e7.pngegg.com/pngimages/714/195/png-clipart-fried-rice-with-stake-hyderabadi-biryani-indian-cuisine-roti-raita-biryani-miscellaneous-food-thumbnail.png"
+    },
+    {
+      "id": 4,
+      "name": "Fish Biriyani",
+      "price": 14.99,
+      "description": "Fresh fish cooked with special spices and basmati rice",
+      "img": "https://e7.pngegg.com/pngimages/139/767/png-clipart-brown-cooking-pot-chicken-karahi-korma-biryani-kebab-biryani-food-recipe-thumbnail.png"
+    },
+    {
+      "id": 5,
+      "name": "Egg Biriyani",
+      "price": 9.99,
+      "description": "Flavorful egg biriyani garnished with fried onions and mint leaves",
+      "img": "https://e7.pngegg.com/pngimages/687/298/png-clipart-fried-rice-and-meat-on-white-ceramic-plate-fizzy-drinks-hyderabadi-biryani-chicken-65-biryani-food-animals-thumbnail.png"
+    }
+  ]
+}
