@@ -1,10 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const metaViewport = document.createElement('meta');
-  metaViewport.name = 'viewport';
-  metaViewport.content = 'width=device-width, initial-scale=1.0';
-  document.head.appendChild(metaViewport);
+  // Function to create metaViewport element
+  const createMetaViewport = () => {
+    const metaViewport = document.createElement('meta');
+    metaViewport.name = 'viewport';
+    metaViewport.content = 'width=device-width, initial-scale=1.0';
+    document.head.appendChild(metaViewport);
+  };
 
-  const baseURL = 'http://localhost:4000/biriyaniMenu'; 
+  // Call createMetaViewport function to set viewport meta tag
+  createMetaViewport();
+
+  const baseURL = 'http://localhost:5000/biriyaniMenu'; 
 
   const fetchData = async () => {
     try {
@@ -50,7 +56,6 @@ document.addEventListener("DOMContentLoaded", () => {
         const addToFavoritesButton = document.createElement('button');
         addToFavoritesButton.textContent = 'Add to Favorites';
         addToFavoritesButton.addEventListener('click', () => {
-        
           alert(`Added ${biriyani.name} to Favorites`);
         });
         li.appendChild(addToFavoritesButton);
@@ -81,7 +86,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (amount && biriyaniName) {
       alert(`You ordered ${amount} ${biriyaniName}(s)`);
-      
     }
   });
 });

@@ -4,10 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biriyani Menu</title>
-  <link rel="stylesheet" href="index.css">
-  <script defer src="index.js"></script>
 </head>
 <body>
-  <h1 id="head">Reagan's Biriyani Menu</h1>
+  <h1>Biriyani Menu</h1>
   <ul id="biriyani-list"></ul>
-  <button id="refresh-btn">Refresh Menu</button>
+  <button id="refresh-btn">Refresh</button>
+  <form id="order-form">
+    <label for="amount">Amount:</label>
+    <input type="number" id="amount" name="amount" required>
+    <label for="biriyani-name">Biriyani Name:</label>
+    <input type="text" id="biriyani-name" name="biriyani-name" required>
+    <button type="submit">Order</button>
+  </form>
+</body>
+</html>
