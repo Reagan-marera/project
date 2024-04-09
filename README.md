@@ -10,7 +10,7 @@ date 9/04/2024
 Requirements
 
 
-A computer with a bash terminal and node installed. Access to the internet. Installation Process Clone this repository using :
+A computer with a bash terminal and node installed. Access to the internet. Installation Process Clone this repository using :https://github.com/Reagan-marera/project.git
 
 git clone or by downloading a ZIP file of the code.
 
