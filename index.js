@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const addToFavoritesButton = document.createElement('button');
         addToFavoritesButton.textContent = 'Add to Favorites';
         addToFavoritesButton.addEventListener('click', () => {
-          // Add logic to add the dish to favorites
+        
           alert(`Added ${biriyani.name} to Favorites`);
         });
         li.appendChild(addToFavoritesButton);
@@ -69,5 +69,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const refreshButton = document.getElementById('refresh-btn');
   refreshButton.addEventListener('click', () => {
     renderBiriyaniMenu(); 
+  });
+
+  const orderForm = document.getElementById('order-form');
+  orderForm.addEventListener('submit', (event) => {
+    event.preventDefault(); 
+
+    const formData = new FormData(orderForm);
+    const amount = formData.get('amount');
+    const biriyaniName = formData.get('biriyani-name');
+
+    if (amount && biriyaniName) {
+      alert(`You ordered ${amount} ${biriyaniName}(s)`);
+      
+    }
   });
 });
