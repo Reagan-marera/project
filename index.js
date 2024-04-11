@@ -46,6 +46,14 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         });
         li.appendChild(orderButton); 
+
+        const addToFavoritesButton = document.createElement('button');
+        addToFavoritesButton.textContent = 'Add to Favorites';
+        addToFavoritesButton.addEventListener('click', () => {
+          // Add logic to add the dish to favorites
+          alert(`Added ${biriyani.name} to Favorites`);
+        });
+        li.appendChild(addToFavoritesButton);
         
         biriyaniList.appendChild(li); 
       });

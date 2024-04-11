@@ -43,4 +43,11 @@ body {
     border: none;
 
   }
-  
+  button{
+    background-color: red;
+    color: aliceblue;
+    height: auto;
+    padding: 10px;
+    border-radius: 20px;
+    border-color: chartreuse;
+  }
