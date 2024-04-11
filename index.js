@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-  
   const metaViewport = document.createElement('meta');
   metaViewport.name = 'viewport';
   metaViewport.content = 'width=device-width, initial-scale=1.0';
   document.head.appendChild(metaViewport);
 
-  const baseURL = 'https://cloner-1-q2gj.onrender.com/biriyaniMenu';
+  const baseURL = 'http://localhost:4000/biriyaniMenu'; 
 
   const fetchData = async () => {
     try {
@@ -57,10 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  
   renderBiriyaniMenu();
 
-  
   const refreshButton = document.getElementById('refresh-btn');
   refreshButton.addEventListener('click', () => {
     renderBiriyaniMenu(); 
