@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const fetchData = async () => {
     try {
-      const response = await fetch("./db/db.json"); // Assuming db.db.json is in the root directory
+      const response = await fetch("./db/db.json"); 
       if (!response.ok) {
         throw new Error('Failed to fetch data from the API');
       }
