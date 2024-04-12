@@ -1,91 +1,82 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Function to create metaViewport element
-  const createMetaViewport = () => {
-    const metaViewport = document.createElement('meta');
-    metaViewport.name = 'viewport';
-    metaViewport.content = 'width=device-width, initial-scale=1.0';
-    document.head.appendChild(metaViewport);
-  };
+  const metaViewport = document.createElement('meta');
+  metaViewport.name = 'viewport';
+  metaViewport.content = 'width=device-width, initial-scale=1.0';
+  document.head.appendChild(metaViewport);
 
-  // Call createMetaViewport function to set viewport meta tag
-  createMetaViewport();
-
-  const baseURL = 'http://localhost:5000/biriyaniMenu'; 
+  const baseURL = 'http://localhost:3000/biriyaniMenu'; 
+  const biriyaniList = document.getElementById('biriyani-list');
+  const refreshButton = document.getElementById('refresh-btn');
 
   const fetchData = async () => {
-    try {
-      const response = await fetch(baseURL);
-      if (!response.ok) {
-        throw new Error('Failed to fetch data from the API');
+      try {
+          const response = await fetch(baseURL);
+          if (!response.ok) {
+              throw new Error('Failed to fetch data from the API');
+          }
+          return response.json();
+      } catch (error) {
+          displayError('Error fetching data:', error.message);
+          return null;
       }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error('Error fetching data:', error.message);
-      return null;
-    }
+  };
+
+  const renderBiriyaniItem = (biriyani) => {
+      const li = document.createElement('li');
+      const img = document.createElement('img');
+      img.src = biriyani.img; 
+      img.alt = biriyani.name; 
+      li.appendChild(img); 
+
+      const dishInfo = document.createElement('span');
+      dishInfo.textContent = `${biriyani.name} - $${biriyani.price.toFixed(2)} - ${biriyani.description}`;
+      li.appendChild(dishInfo); 
+
+      const orderButton = createButton('Order', () => orderBiriyani(biriyani));
+      const addToFavoritesButton = createButton('Add to Favorites', () => addToFavorites(biriyani));
+      li.appendChild(orderButton); 
+      li.appendChild(addToFavoritesButton);
+
+      biriyaniList.appendChild(li); 
+  };
+
+  const createButton = (text, onClick) => {
+      const button = document.createElement('button');
+      button.textContent = text;
+      button.addEventListener('click', onClick);
+      return button;
+  };
+
+  const displayError = (message) => {
+      const li = document.createElement('li');
+      li.textContent = message;
+      biriyaniList.appendChild(li);
+  };
+
+  const orderBiriyani = (biriyani) => {
+      const amount = prompt(`Enter the amount of ${biriyani.name}:`);
+      if (amount !== null) {
+          alert(`You ordered ${amount} ${biriyani.name}(s)`);
+      }
+  };
+
+  const addToFavorites = (biriyani) => {
+      alert(`Added ${biriyani.name} to Favorites`);
   };
 
   const renderBiriyaniMenu = async () => {
-    const biriyaniList = document.getElementById('biriyani-list');
-    biriyaniList.innerHTML = ''; 
-    const data = await fetchData();
-    if (data && Array.isArray(data)) {
-      data.forEach(biriyani => {
-        const li = document.createElement('li');
-        
-        const img = document.createElement('img');
-        img.src = biriyani.img; 
-        img.alt = biriyani.name; 
-        li.appendChild(img); 
-        
-        const dishInfo = document.createElement('span');
-        dishInfo.textContent = `${biriyani.name} - $${biriyani.price.toFixed(2)} - ${biriyani.description}`;
-        li.appendChild(dishInfo); 
-        
-        const orderButton = document.createElement('button');
-        orderButton.textContent = 'Order';
-        orderButton.addEventListener('click', () => {
-          const amount = prompt(`Enter the amount of ${biriyani.name}:`);
-          if (amount !== null) {
-            alert(`You ordered ${amount} ${biriyani.name}(s)`);
-          }
-        });
-        li.appendChild(orderButton); 
-
-        const addToFavoritesButton = document.createElement('button');
-        addToFavoritesButton.textContent = 'Add to Favorites';
-        addToFavoritesButton.addEventListener('click', () => {
-          alert(`Added ${biriyani.name} to Favorites`);
-        });
-        li.appendChild(addToFavoritesButton);
-        
-        biriyaniList.appendChild(li); 
-      });
-    } else {
-      const li = document.createElement('li');
-      li.textContent = 'Failed to fetch biriyani menu';
-      biriyaniList.appendChild(li);
-    }
+      biriyaniList.innerHTML = ''; 
+      const data = await fetchData();
+      if (data && Array.isArray(data)) {
+          data.forEach(biriyani => {
+              renderBiriyaniItem(biriyani);
+          });
+      } else {
+          displayError('Failed to fetch biriyani menu');
+      }
   };
 
   renderBiriyaniMenu();
 
-  const refreshButton = document.getElementById('refresh-btn');
-  refreshButton.addEventListener('click', () => {
-    renderBiriyaniMenu(); 
-  });
-
-  const orderForm = document.getElementById('order-form');
-  orderForm.addEventListener('submit', (event) => {
-    event.preventDefault(); 
-
-    const formData = new FormData(orderForm);
-    const amount = formData.get('amount');
-    const biriyaniName = formData.get('biriyani-name');
-
-    if (amount && biriyaniName) {
-      alert(`You ordered ${amount} ${biriyaniName}(s)`);
-    }
-  });
+  refreshButton.addEventListener('click', renderBiriyaniMenu);
 });
