@@ -70,18 +70,4 @@ document.addEventListener("DOMContentLoaded", () => {
   refreshButton.addEventListener('click', () => {
     renderBiriyaniMenu(); 
   });
-
-  const orderForm = document.getElementById('order-form');
-  orderForm.addEventListener('submit', (event) => {
-    event.preventDefault(); 
-
-    const formData = new FormData(orderForm);
-    const amount = formData.get('amount');
-    const biriyaniName = formData.get('biriyani-name');
-
-    if (amount && biriyaniName) {
-      alert(`You ordered ${amount} ${biriyaniName}(s)`);
-      
-    }
-  });
 });
